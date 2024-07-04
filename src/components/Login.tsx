@@ -1,17 +1,22 @@
 // import React, {useState} from 'react';
-// import {Text, View, StyleSheet, TextInput, Alert} from 'react-native';
-// import {TouchableOpacity} from 'react-native';
+// import {
+//   StyleSheet,
+//   Text,
+//   View,
+//   TextInput,
+//   Alert,
+//   TouchableOpacity,
+// } from 'react-native';
 
-// function Register() {
-//   const [name, setName] = useState('');
+// export default function Login({navigation}) {
 //   const [email, setEmail] = useState('');
 //   const [password, setPassword] = useState('');
 //   const [loading, setLoading] = useState(false);
 //   const [submitted, setSubmitted] = useState(false);
 
-//   const handleSubmit = ({navigation}) => {
+//   const handleSubmit = () => {
 //     if (!submitted) {
-//       if (!name || !email || !password) {
+//       if (!email || !password) {
 //         return Alert.alert('Please fill all fields');
 //       }
 
@@ -21,13 +26,11 @@
 //         setLoading(false);
 //         setSubmitted(true);
 
-//         console.log('Name:', name);
 //         console.log('Email:', email);
 //         console.log('Password:', password);
 //       }, 2000); // Simulate a 2-second delay
 //     } else {
 //       // Clear data
-//       setName('');
 //       setEmail('');
 //       setPassword('');
 //       setSubmitted(false);
@@ -35,20 +38,10 @@
 //   };
 
 //   return (
-//     <View style={styles.container}>
-//       <Text style={styles.pageTitle}>Register</Text>
+//     <View style={styles.Maincontainer}>
+//       <Text style={styles.pageTitle}>Login Page</Text>
 //       <View style={styles.inputContainer}>
-//         <Text style={styles.inputLabel}>NAME*</Text>
-//         <TextInput
-//           style={styles.inputBox}
-//           placeholder="Enter your name"
-//           placeholderTextColor="#999"
-//           value={name}
-//           onChangeText={text => setName(text)}
-//         />
-//       </View>
-//       <View style={styles.inputContainer}>
-//         <Text style={styles.inputLabel}>EMAIL*</Text>
+//         <Text style={styles.inputLabel}>Email*</Text>
 //         <TextInput
 //           style={styles.inputBox}
 //           placeholder="Enter your email"
@@ -56,11 +49,11 @@
 //           placeholderTextColor="#999"
 //           keyboardType="email-address"
 //           value={email}
-//           onChangeText={text => setEmail(text)}
+//           onChangeText={setEmail}
 //         />
 //       </View>
 //       <View style={styles.inputContainer}>
-//         <Text style={styles.inputLabel}>PASSWORD*</Text>
+//         <Text style={styles.inputLabel}>Password*</Text>
 //         <TextInput
 //           style={styles.inputBox}
 //           placeholder="Enter your password"
@@ -68,24 +61,21 @@
 //           autoComplete="password"
 //           secureTextEntry
 //           value={password}
-//           onChangeText={text => setPassword(text)}
+//           onChangeText={setPassword}
 //         />
 //       </View>
-//       <View>
-//         <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-//           <Text style={styles.buttonText}>
-//             {loading ? 'Loading...' : submitted ? 'Clear Data' : 'Submit'}
-//           </Text>
-//         </TouchableOpacity>
-//         <View style={styles.linkContainer} >
-//         <Text style={styles.LinkText}>
-//         Already Registered? <Text style={styles.link} onPress={()=>navigation.navigate("Login")}>LOGIN</Text>
+//       <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+//         <Text style={styles.buttonText}>
+//           {loading ? 'Loading...' : submitted ? 'Clear Data' : 'Login'}
 //         </Text>
-//         </View>
+//       </TouchableOpacity>
+//       <View style={styles.linkContainer}>
+//         <Text style={styles.linkText}>
+//           Not a Register ? <Text style={styles.link} onPress={()=>navigation.navigate("Register")}> Register</Text>
+//         </Text>
 //       </View>
 //       {submitted && (
 //         <View>
-//           <Text style={styles.outputText}>Name: {name}</Text>
 //           <Text style={styles.outputText}>Email: {email}</Text>
 //           <Text style={styles.outputText}>Password: {password}</Text>
 //         </View>
@@ -95,11 +85,16 @@
 // }
 
 // const styles = StyleSheet.create({
-//   container: {
+//   Maincontainer: {
 //     flex: 1,
 //     justifyContent: 'center',
-//     padding: 20,
+
 //     backgroundColor: '#f7f1e3',
+//     padding: 20,
+//   },
+//   inputContainer: {
+//     width: '80%',
+//     marginBottom: 20,
 //   },
 //   pageTitle: {
 //     fontSize: 36,
@@ -108,16 +103,8 @@
 //     textAlign: 'center',
 //     marginBottom: 30,
 //   },
-//   inputContainer: {
-//     marginBottom: 20,
-//   },
-//   inputLabel: {
-//     fontSize: 18,
-//     color: 'rgb(48, 48, 47)',
-//     marginBottom: 5,
-//     fontWeight: 'bold',
-//   },
 //   inputBox: {
+//     width: '100%',
 //     height: 45,
 //     backgroundColor: '#ffffff',
 //     borderRadius: 10,
@@ -126,57 +113,55 @@
 //     borderWidth: 1,
 //     borderColor: '#dfe6e9',
 //   },
+//   inputLabel: {
+//     fontSize: 18,
+//     color: 'rgb(48, 48, 47)',
+//     marginBottom: 5,
+//     fontWeight: 'bold',
+//   },
 //   button: {
-//     backgroundColor: 'blue',
-//     padding: 10,
-//     borderRadius: 20,
+//     backgroundColor: '#0984e3',
+//     padding: 15,
+//     borderRadius: 10,
 //     alignItems: 'center',
-//     marginVertical: 10,
-//     width: 150,
-//     alignSelf: 'center',
+//     width: '80%',
+//     marginTop: 10,
 //   },
 //   buttonText: {
-//     color: '#ffffff',
-//     fontSize: 18,
+//     color: '#fff',
+//     fontSize: 20,
 //     fontWeight: 'bold',
+//   },
+//   linkContainer: {
+//     marginTop: 20,
+//     alignItems: 'center',
+//   },
+//   linkText: {
+//     color: '#0984e3',
+//     fontSize: 16,
+//   },
+//   link: {
+//     color: 'red',
 //   },
 //   outputText: {
-//     fontSize: 20,
-//     backgroundColor: 'black',
-//     color: 'white',
-//     fontWeight: 'bold',
-//     height: 40,
-//     display: 'flex',
-//     width: 300,
-//     margin: 10,
-//     padding: 2,
-//     paddingLeft: 10,
-//     borderRadius: 20,
-//     alignSelf: 'center',
+//     fontSize: 18,
+//     color: '#2d3436',
+//     textAlign: 'center',
+//     marginTop: 20,
 //   },
-//   link :{
-// color : 'red',
-// fontSize : 16,
- 
-//   },
-//   LinkText :{
-// fontSize : 16,
-// fontWeight : 'bold',
-// color : 'black'
-//   },
-//   linkContainer : {
-//     marginTop : 16,
-//     marginLeft : 80,
-//   }
-
 // });
 
-export default Register;
-import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, Alert, TouchableOpacity } from 'react-native';
+import React, {useState} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Alert,
+  TouchableOpacity,
+} from 'react-native';
 
-function Register({ navigation }) {
-  const [name, setName] = useState('');
+export default function Login({navigation}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -184,7 +169,7 @@ function Register({ navigation }) {
 
   const handleSubmit = () => {
     if (!submitted) {
-      if (!name || !email || !password) {
+      if (!email || !password) {
         return Alert.alert('Please fill all fields');
       }
 
@@ -194,13 +179,11 @@ function Register({ navigation }) {
         setLoading(false);
         setSubmitted(true);
 
-        console.log('Name:', name);
         console.log('Email:', email);
         console.log('Password:', password);
       }, 2000); // Simulate a 2-second delay
     } else {
       // Clear data
-      setName('');
       setEmail('');
       setPassword('');
       setSubmitted(false);
@@ -208,20 +191,10 @@ function Register({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.pageTitle}>Register</Text>
+    <View style={styles.Maincontainer}>
+      <Text style={styles.pageTitle}>Login Page</Text>
       <View style={styles.inputContainer}>
-        <Text style={styles.inputLabel}>NAME*</Text>
-        <TextInput
-          style={styles.inputBox}
-          placeholder="Enter your name"
-          placeholderTextColor="#999"
-          value={name}
-          onChangeText={text => setName(text)}
-        />
-      </View>
-      <View style={styles.inputContainer}>
-        <Text style={styles.inputLabel}>EMAIL*</Text>
+        <Text style={styles.inputLabel}>Email*</Text>
         <TextInput
           style={styles.inputBox}
           placeholder="Enter your email"
@@ -229,11 +202,11 @@ function Register({ navigation }) {
           placeholderTextColor="#999"
           keyboardType="email-address"
           value={email}
-          onChangeText={text => setEmail(text)}
+          onChangeText={setEmail}
         />
       </View>
       <View style={styles.inputContainer}>
-        <Text style={styles.inputLabel}>PASSWORD*</Text>
+        <Text style={styles.inputLabel}>Password*</Text>
         <TextInput
           style={styles.inputBox}
           placeholder="Enter your password"
@@ -241,22 +214,26 @@ function Register({ navigation }) {
           autoComplete="password"
           secureTextEntry
           value={password}
-          onChangeText={text => setPassword(text)}
+          onChangeText={setPassword}
         />
       </View>
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>
         <Text style={styles.buttonText}>
-          {loading ? 'Loading...' : submitted ? 'Clear Data' : 'Submit'}
+          {loading ? 'Loading...' : submitted ? 'Clear Data' : 'Login'}
         </Text>
       </TouchableOpacity>
       <View style={styles.linkContainer}>
         <Text style={styles.linkText}>
-          Already Registered? <Text style={styles.link} onPress={() => navigation.navigate('Login')}>LOGIN</Text>
+          Not Registered?{' '}
+          <Text
+            style={styles.link}
+            onPress={() => navigation.navigate('Register')}>
+            Register
+          </Text>
         </Text>
       </View>
       {submitted && (
         <View>
-          <Text style={styles.outputText}>Name: {name}</Text>
           <Text style={styles.outputText}>Email: {email}</Text>
           <Text style={styles.outputText}>Password: {password}</Text>
         </View>
@@ -266,12 +243,16 @@ function Register({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  Maincontainer: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
+
     backgroundColor: '#f7f1e3',
+    padding: 20,
+  },
+  inputContainer: {
+    width: '80%',
+    marginBottom: 20,
   },
   pageTitle: {
     fontSize: 36,
@@ -279,16 +260,6 @@ const styles = StyleSheet.create({
     color: '#2d3436',
     textAlign: 'center',
     marginBottom: 30,
-  },
-  inputContainer: {
-    width: '80%',
-    marginBottom: 20,
-  },
-  inputLabel: {
-    fontSize: 18,
-    color: 'rgb(48, 48, 47)',
-    marginBottom: 5,
-    fontWeight: 'bold',
   },
   inputBox: {
     width: '100%',
@@ -300,46 +271,40 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#dfe6e9',
   },
+  inputLabel: {
+    fontSize: 18,
+    color: 'rgb(48, 48, 47)',
+    marginBottom: 5,
+    fontWeight: 'bold',
+  },
   button: {
-    backgroundColor: 'blue',
-    padding: 10,
-    borderRadius: 20,
+    backgroundColor: '#0984e3',
+    padding: 15,
+    borderRadius: 10,
     alignItems: 'center',
-    marginVertical: 10,
     width: '80%',
+    marginTop: 10,
   },
   buttonText: {
-    color: '#ffffff',
-    fontSize: 18,
+    color: '#fff',
+    fontSize: 20,
     fontWeight: 'bold',
   },
-  outputText: {
-    fontSize: 20,
-    backgroundColor: 'black',
-    color: 'white',
-    fontWeight: 'bold',
-    height: 40,
-    display: 'flex',
-    width: 300,
-    margin: 10,
-    padding: 2,
-    paddingLeft: 10,
-    borderRadius: 20,
-    alignSelf: 'center',
+  linkContainer: {
+    marginTop: 20,
+    alignItems: 'center',
   },
   linkText: {
+    color: '#0984e3',
     fontSize: 16,
-    fontWeight: 'bold',
-    color: 'black',
   },
   link: {
     color: 'red',
-    fontSize: 16,
   },
-  linkContainer: {
-    marginTop: 16,
-    alignItems: 'center',
+  outputText: {
+    fontSize: 18,
+    color: '#2d3436',
+    textAlign: 'center',
+    marginTop: 20,
   },
 });
-
-export default Register;
